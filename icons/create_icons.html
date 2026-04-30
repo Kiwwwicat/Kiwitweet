@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>KiwiTweet Icon Generator</title></head>
+<body>
+<canvas id="c16" width="16" height="16"></canvas>
+<canvas id="c48" width="48" height="48"></canvas>
+<canvas id="c128" width="128" height="128"></canvas>
+<script>
+function drawIcon(canvas, size) {
+  const ctx = canvas.getContext('2d');
+  const r = size / 2;
+
+  // Background circle
+  ctx.beginPath();
+  ctx.arc(r, r, r, 0, Math.PI * 2);
+  ctx.fillStyle = '#1d9bf0';
+  ctx.fill();
+
+  // Letter "K" in white
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `bold ${size * 0.55}px Arial`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('K', r, r + size * 0.02);
+
+  // Small notification dot
+  const dotR = size * 0.15;
+  ctx.beginPath();
+  ctx.arc(size - dotR - size * 0.05, dotR + size * 0.05, dotR, 0, Math.PI * 2);
+  ctx.fillStyle = '#f91880';
+  ctx.fill();
+}
+
+[16, 48, 128].forEach(s => {
+  const canvas = document.getElementById('c' + s);
+  drawIcon(canvas, s);
+
+  const link = document.createElement('a');
+  link.download = 'icon' + s + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.textContent = 'Download ' + s + 'px';
+  link.style.display = 'block';
+  link.style.margin = '10px';
+  document.body.appendChild(link);
+});
+</script>
+<p>각 링크를 클릭하여 icons/ 폴더에 저장하세요.</p>
+</body>
+</html>

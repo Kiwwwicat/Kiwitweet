@@ -1,0 +1,16 @@
+# 배포 zip은 GitHub Releases 로 별도 관리
+*.zip
+
+# Claude Code 로컬 설정
+.claude/
+
+# OS / 에디터
+.DS_Store
+Thumbs.db
+*.swp
+*.bak
+
+# 자료/디자인 원본
+*.psd
+설치 가이드.png
+예시.png

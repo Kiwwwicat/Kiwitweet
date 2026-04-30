@@ -1,0 +1,98 @@
+/* KiwiTweet — 미답변 멘션 필터 토글 */
+
+/* 토글 버튼 (페이지 우하단 고정) */
+.kiwi-toggle {
+  position: fixed;
+  right: 20px;
+  top: 14px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px 9px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgb(83, 100, 113);
+  background: rgb(22, 24, 28);
+  color: rgb(231, 233, 234);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo",
+    "Malgun Gothic", "Noto Sans KR", Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease;
+  user-select: none;
+}
+
+.kiwi-toggle:hover {
+  background: rgb(32, 35, 41);
+  border-color: rgb(110, 130, 145);
+}
+
+.kiwi-toggle:active {
+  transform: translateY(1px);
+}
+
+.kiwi-toggle.kiwi-on {
+  background: rgb(29, 155, 240);
+  border-color: rgb(29, 155, 240);
+  color: white;
+}
+
+.kiwi-toggle.kiwi-on:hover {
+  background: rgb(26, 140, 216);
+  border-color: rgb(26, 140, 216);
+}
+
+/* 토글 트랙 + 손잡이 */
+.kiwi-toggle-track {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 18px;
+  border-radius: 9999px;
+  background: rgb(83, 100, 113);
+  transition: background-color 0.15s ease;
+  flex-shrink: 0;
+}
+
+.kiwi-toggle.kiwi-on .kiwi-toggle-track {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.kiwi-toggle-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+  transition: transform 0.15s ease;
+}
+
+.kiwi-toggle.kiwi-on .kiwi-toggle-knob {
+  transform: translateX(12px);
+}
+
+.kiwi-toggle-text {
+  white-space: nowrap;
+}
+
+/* 필터링된 알림 숨김 */
+.kiwi-hidden {
+  display: none !important;
+}
+
+/* 라이트 모드 보정 */
+@media (prefers-color-scheme: light) {
+  .kiwi-toggle:not(.kiwi-on) {
+    background: white;
+    color: rgb(15, 20, 25);
+    border-color: rgb(207, 217, 222);
+  }
+  .kiwi-toggle:not(.kiwi-on):hover {
+    background: rgb(247, 249, 249);
+  }
+}
